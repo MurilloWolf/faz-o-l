@@ -28,9 +28,9 @@ export default function Home() {
         <section className="col-span-12 row-start-2  md:col-start-1">
           <CardList />
           <div className="py-4 flex justify-evenly items-center h-42">
-            <AdBanner />
+            {/* <AdBanner />
             <AdBanner className="hidden md:block" />
-            <AdBanner className="hidden md:block" />
+            <AdBanner className="hidden md:block" /> */}
           </div>
         </section>
         <Footer />
