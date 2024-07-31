@@ -21,8 +21,8 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon.ico" />
       </head>
-      <GoogleTagManager gtmId="GTM-WD99BR59" />
-      <GoogleAnalytics gaId="G-9RF98W2Z53" />
+      <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GOOGLE_TAG || ""} />
+      <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANLITYC || ""} />
       <body className={"bg-slate-50 " + inter.className}>{children}</body>
     </html>
   );
