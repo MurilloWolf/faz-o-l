@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { star as bg } from "../assets/images";
+import { star_lazy as bg } from "../assets/images";
 import { Salsa } from "next/font/google";
 import { AdBanner, CardList, Footer } from "@/components/system";
 
@@ -16,6 +16,9 @@ export default function Home() {
             src={bg}
             className=" w-[200px] md:w-[200px] md:h-[200px] rounded-full"
             alt="luiz inácio lula da silva ladrão filho da puta"
+            lazyBoundary="Estrela do pt"
+            priority
+            unoptimized
           />
           <div className="p-2 py-4 ">
             <h1
@@ -27,10 +30,10 @@ export default function Home() {
         </header>
         <section className="col-span-12 row-start-2  md:col-start-1">
           <CardList />
-          <div className="py-4 flex justify-evenly items-center h-42">
-            {/* <AdBanner />
+          <div className="py-4 flex justify-evenly items-center max-h-40">
+            <AdBanner />
             <AdBanner className="hidden md:block" />
-            <AdBanner className="hidden md:block" /> */}
+            <AdBanner className="hidden md:block" />
           </div>
         </section>
         <Footer />

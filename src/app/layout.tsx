@@ -20,6 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <meta name="google-adsense-account" content="ca-pub-3830032890688351" />
         <AdSense />
         <link rel="icon" href="/favicon.ico" />
       </head>
