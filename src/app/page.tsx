@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { star_lazy as bg } from "../assets/images";
 import { Salsa } from "next/font/google";
-import { AdBanner, CardList, Footer } from "@/components/system";
+import { CardList, Footer } from "@/components/system";
 
 const salsa = Salsa({ subsets: ["latin"], display: "swap", weight: "400" });
 
@@ -30,11 +30,6 @@ export default function Home() {
         </header>
         <section className="col-span-12 row-start-2  md:col-start-1">
           <CardList />
-          <div className="py-4 flex justify-evenly items-center max-h-40">
-            <AdBanner />
-            <AdBanner className="hidden md:block" />
-            <AdBanner className="hidden md:block" />
-          </div>
         </section>
         <Footer />
       </main>

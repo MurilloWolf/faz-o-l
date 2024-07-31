@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { AdSense } from "@/components/system";
-import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
+import { GoogleTagManager } from "@next/third-parties/google";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,12 +19,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <meta name="google-adsense-account" content="ca-pub-3830032890688351" />
-        <AdSense />
         <link rel="icon" href="/favicon.ico" />
       </head>
-      <GoogleTagManager gtmId="GTM-XYZ" />
-      <GoogleAnalytics gaId="UA-XYZ" />
+      <GoogleTagManager gtmId="GTM-WD99BR59" />
       <body className={"bg-slate-50 " + inter.className}>{children}</body>
     </html>
   );
