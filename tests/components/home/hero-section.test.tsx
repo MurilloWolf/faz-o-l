@@ -37,9 +37,7 @@ describe("HeroSection", () => {
         formatDate={formatDate}
       />,
     );
-    expect(
-      screen.getByRole("heading", { level: 1 }),
-    ).toBeInTheDocument();
+    expect(screen.getByRole("heading", { level: 1 })).toBeInTheDocument();
   });
 
   it("renders the featured notice title when provided", () => {
@@ -61,9 +59,10 @@ describe("HeroSection", () => {
         formatDate={formatDate}
       />,
     );
-    expect(
-      screen.getByRole("link", { name: /abrir no Reuters/i }),
-    ).toHaveAttribute("href", featured.link);
+    expect(screen.getByRole("link", { name: /abrir no Reuters/i })).toHaveAttribute(
+      "href",
+      featured.link,
+    );
   });
 
   it("renders fallback text when no featuredNotice is provided", () => {
@@ -74,9 +73,7 @@ describe("HeroSection", () => {
         formatDate={formatDate}
       />,
     );
-    expect(
-      screen.getByText(/sem notícias carregadas no momento/i),
-    ).toBeInTheDocument();
+    expect(screen.getByText(/sem notícias carregadas no momento/i)).toBeInTheDocument();
   });
 
   it("renders latest notices with h3 titles", () => {
@@ -88,9 +85,7 @@ describe("HeroSection", () => {
       />,
     );
     for (const notice of latestNotices) {
-      expect(
-        screen.getByRole("heading", { level: 3, name: notice.title }),
-      ).toBeInTheDocument();
+      expect(screen.getByRole("heading", { level: 3, name: notice.title })).toBeInTheDocument();
     }
   });
 
@@ -115,9 +110,7 @@ describe("HeroSection", () => {
       />,
     );
     // The link's accessible name includes date + title + source text, so query by href
-    const link = document.querySelector<HTMLAnchorElement>(
-      `a[href="${latestNotices[0].link}"]`,
-    );
+    const link = document.querySelector<HTMLAnchorElement>(`a[href="${latestNotices[0].link}"]`);
     expect(link).not.toBeNull();
     expect(link).toHaveAttribute("target", "_blank");
     expect(link).toHaveAttribute("rel", "noreferrer");

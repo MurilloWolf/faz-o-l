@@ -40,7 +40,10 @@ export function SiteHeader({
   return (
     <header className="w-full bg-linear-to-r from-black via-zinc-900 to-red-950 shadow-sm">
       <div className="mx-auto w-full max-w-6xl px-0 py-3 sm:px-6 lg:px-8">
-          <nav aria-label="Navegação principal" className="bg-transparent px-4 py-3 text-white shadow-sm sm:rounded-xl">
+        <nav
+          aria-label="Navegação principal"
+          className="bg-transparent px-4 py-3 text-white shadow-sm sm:rounded-xl"
+        >
           <div className="flex items-center justify-between gap-3">
             <div
               className="flex flex-row leading-tight tracking-wide items-center"

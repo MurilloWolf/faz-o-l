@@ -34,7 +34,10 @@ export function EditoriasSection({ spotlightNotices, formatDate }: Props) {
 
       <div className="grid gap-5 lg:grid-cols-2">
         {/* Carousel */}
-        <article aria-label="Carrossel de editorias" className="relative flex flex-col overflow-hidden rounded-2xl shadow-lg">
+        <article
+          aria-label="Carrossel de editorias"
+          className="relative flex flex-col overflow-hidden rounded-2xl shadow-lg"
+        >
           {/* Image / gradient area */}
           <div
             className={`relative flex min-h-80 flex-1 items-center justify-center overflow-hidden transition-all duration-500 ${slide?.image ? "bg-black" : `bg-linear-to-br ${SLIDE_GRADIENTS[current]}`}`}

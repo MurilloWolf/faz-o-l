@@ -38,9 +38,7 @@ describe("NotificationBar", () => {
         Alerta
       </NotificationBar>,
     );
-    expect(
-      screen.getByRole("button", { name: /fechar notificação/i }),
-    ).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /fechar notificação/i })).toBeInTheDocument();
   });
 
   it("calls onClose when close button is clicked", async () => {
@@ -50,9 +48,7 @@ describe("NotificationBar", () => {
         Alerta
       </NotificationBar>,
     );
-    await userEvent.click(
-      screen.getByRole("button", { name: /fechar notificação/i }),
-    );
+    await userEvent.click(screen.getByRole("button", { name: /fechar notificação/i }));
     expect(onClose).toHaveBeenCalledOnce();
   });
 });

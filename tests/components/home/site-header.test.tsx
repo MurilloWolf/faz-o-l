@@ -62,33 +62,25 @@ describe("SiteHeader", () => {
   it("renders all nav items as links (desktop nav)", () => {
     render(<SiteHeader {...defaultProps} />);
     for (const item of navItems) {
-      expect(
-        screen.getByRole("link", { name: item.label }),
-      ).toBeInTheDocument();
+      expect(screen.getByRole("link", { name: item.label })).toBeInTheDocument();
     }
   });
 
   it("nav links point to the correct section anchors", () => {
     render(<SiteHeader {...defaultProps} />);
     for (const item of navItems) {
-      expect(
-        screen.getByRole("link", { name: item.label }),
-      ).toHaveAttribute("href", `#${item.id}`);
+      expect(screen.getByRole("link", { name: item.label })).toHaveAttribute("href", `#${item.id}`);
     }
   });
 
   it("nav has aria-label for accessibility and SEO", () => {
     render(<SiteHeader {...defaultProps} />);
-    expect(
-      screen.getByRole("navigation", { name: /navegação principal/i }),
-    ).toBeInTheDocument();
+    expect(screen.getByRole("navigation", { name: /navegação principal/i })).toBeInTheDocument();
   });
 
   it("renders mobile menu toggle button with accessible label", () => {
     render(<SiteHeader {...defaultProps} />);
-    expect(
-      screen.getByRole("button", { name: /abrir menu/i }),
-    ).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /abrir menu/i })).toBeInTheDocument();
   });
 
   it("renders a <header> landmark", () => {

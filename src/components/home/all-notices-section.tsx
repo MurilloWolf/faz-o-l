@@ -142,7 +142,9 @@ export function AllNoticesSection({ notices, formatDate }: Props) {
                 >
                   <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
                     <h3 className="text-sm font-medium text-foreground">{item.title}</h3>
-                    <time className="shrink-0 text-xs text-muted-foreground" dateTime={item.date}>{formatDate(item.date)}</time>
+                    <time className="shrink-0 text-xs text-muted-foreground" dateTime={item.date}>
+                      {formatDate(item.date)}
+                    </time>
                   </div>
                   <p className="mt-1 text-xs text-muted-foreground">{item.linkText}</p>
                 </a>

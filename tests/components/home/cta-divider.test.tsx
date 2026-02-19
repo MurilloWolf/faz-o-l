@@ -7,17 +7,13 @@ import { CtaDivider } from "@/components/home/cta-divider";
 describe("CtaDivider", () => {
   it("renders the CTA button", () => {
     render(<CtaDivider onClick={vi.fn()} />);
-    expect(
-      screen.getByRole("button", { name: /ver todas as notícias/i }),
-    ).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /ver todas as notícias/i })).toBeInTheDocument();
   });
 
   it("calls onClick when button is clicked", async () => {
     const onClick = vi.fn();
     render(<CtaDivider onClick={onClick} />);
-    await userEvent.click(
-      screen.getByRole("button", { name: /ver todas as notícias/i }),
-    );
+    await userEvent.click(screen.getByRole("button", { name: /ver todas as notícias/i }));
     expect(onClick).toHaveBeenCalledOnce();
   });
 

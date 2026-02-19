@@ -14,86 +14,40 @@ const makeNotice = (n: number): Notice => ({
   link: `https://example.com/notice-${n}`,
 });
 
-const spotlightNotices: Notice[] = Array.from({ length: 8 }, (_, i) =>
-  makeNotice(i + 1),
-);
+const spotlightNotices: Notice[] = Array.from({ length: 8 }, (_, i) => makeNotice(i + 1));
 
 describe("EditoriasSection", () => {
   it("renders the section heading", () => {
-    render(
-      <EditoriasSection
-        spotlightNotices={spotlightNotices}
-        formatDate={formatDate}
-      />,
-    );
-    expect(
-      screen.getByRole("heading", { name: /editorias em destaque/i }),
-    ).toBeInTheDocument();
+    render(<EditoriasSection spotlightNotices={spotlightNotices} formatDate={formatDate} />);
+    expect(screen.getByRole("heading", { name: /editorias em destaque/i })).toBeInTheDocument();
   });
 
   it("renders the sub-heading description", () => {
-    render(
-      <EditoriasSection
-        spotlightNotices={spotlightNotices}
-        formatDate={formatDate}
-      />,
-    );
-    expect(
-      screen.getByText(/panorama rápido com o que importa hoje/i),
-    ).toBeInTheDocument();
+    render(<EditoriasSection spotlightNotices={spotlightNotices} formatDate={formatDate} />);
+    expect(screen.getByText(/panorama rápido com o que importa hoje/i)).toBeInTheDocument();
   });
 
   it("renders previous and next carousel buttons", () => {
-    render(
-      <EditoriasSection
-        spotlightNotices={spotlightNotices}
-        formatDate={formatDate}
-      />,
-    );
-    expect(
-      screen.getByRole("button", { name: /notícia anterior/i }),
-    ).toBeInTheDocument();
-    expect(
-      screen.getByRole("button", { name: /próxima notícia/i }),
-    ).toBeInTheDocument();
+    render(<EditoriasSection spotlightNotices={spotlightNotices} formatDate={formatDate} />);
+    expect(screen.getByRole("button", { name: /notícia anterior/i })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /próxima notícia/i })).toBeInTheDocument();
   });
 
   it("renders dot indicators for each slide", () => {
-    render(
-      <EditoriasSection
-        spotlightNotices={spotlightNotices}
-        formatDate={formatDate}
-      />,
-    );
+    render(<EditoriasSection spotlightNotices={spotlightNotices} formatDate={formatDate} />);
     // 4 slides max (capped at slice(0,4))
-    expect(
-      screen.getByRole("button", { name: /ir para slide 1/i }),
-    ).toBeInTheDocument();
-    expect(
-      screen.getByRole("button", { name: /ir para slide 4/i }),
-    ).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /ir para slide 1/i })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /ir para slide 4/i })).toBeInTheDocument();
   });
 
   it("renders side notice headings", () => {
-    render(
-      <EditoriasSection
-        spotlightNotices={spotlightNotices}
-        formatDate={formatDate}
-      />,
-    );
+    render(<EditoriasSection spotlightNotices={spotlightNotices} formatDate={formatDate} />);
     // Side list shows items 1..5 (indices 1-5 of spotlightNotices)
-    expect(
-      screen.getByRole("heading", { name: spotlightNotices[1].title }),
-    ).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: spotlightNotices[1].title })).toBeInTheDocument();
   });
 
   it("clicking next changes the visible slide content", async () => {
-    render(
-      <EditoriasSection
-        spotlightNotices={spotlightNotices}
-        formatDate={formatDate}
-      />,
-    );
+    render(<EditoriasSection spotlightNotices={spotlightNotices} formatDate={formatDate} />);
     const nextBtn = screen.getByRole("button", { name: /próxima notícia/i });
     // After clicking next, slide 2 indicator becomes active
     await userEvent.click(nextBtn);
@@ -104,10 +58,7 @@ describe("EditoriasSection", () => {
 
   it("has id='editorias' for anchor navigation", () => {
     const { container } = render(
-      <EditoriasSection
-        spotlightNotices={spotlightNotices}
-        formatDate={formatDate}
-      />,
+      <EditoriasSection spotlightNotices={spotlightNotices} formatDate={formatDate} />,
     );
     expect(container.querySelector("#editorias")).not.toBeNull();
   });

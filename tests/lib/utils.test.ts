@@ -12,9 +12,7 @@ describe("cn()", () => {
   });
 
   it("filters out falsy values", () => {
-    expect(cn("base", false && "false-class", undefined, null, "real")).toBe(
-      "base real",
-    );
+    expect(cn("base", false && "false-class", undefined, null, "real")).toBe("base real");
   });
 
   it("resolves Tailwind conflicts (last wins)", () => {
