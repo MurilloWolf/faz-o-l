@@ -1,14 +1,78 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
-import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 
-const inter = Inter({ subsets: ["latin"] });
+import type { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
+
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+const siteUrl = "https://fazol.news";
+const siteName = "Faz o L News";
+const siteDescription =
+  "Acompanhe as principais notícias sobre política brasileira, economia e os escândalos do governo federal. Análises e reportagens atualizadas diariamente.";
 
 export const metadata: Metadata = {
-  title: "Faz o L filho da puta!",
-  description:
-    "Um site desenhado para expor todos os impostos e taxas que o Lula e o Haddad criaram.",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: `${siteName} – Notícias sobre política brasileira`,
+    template: `%s | ${siteName}`,
+  },
+  description: siteDescription,
+  keywords: [
+    "política brasileira",
+    "notícias brasil",
+    "governo federal",
+    "PT",
+    "Lula",
+    "Banco Master",
+    "STF",
+    "escândalo político",
+    "economia brasil",
+    "corrupção",
+  ],
+  authors: [{ name: siteName }],
+  creator: siteName,
+  publisher: siteName,
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-snippet": -1 },
+  },
+  alternates: { canonical: siteUrl },
+  openGraph: {
+    type: "website",
+    url: siteUrl,
+    locale: "pt_BR",
+    siteName,
+    title: `${siteName} – Notícias sobre política brasileira`,
+    description: siteDescription,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${siteName} – Notícias sobre política brasileira`,
+    description: siteDescription,
+  },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "NewsMediaOrganization",
+  name: siteName,
+  url: siteUrl,
+  description: siteDescription,
+  inLanguage: "pt-BR",
+  potentialAction: {
+    "@type": "SearchAction",
+    target: `${siteUrl}/?q={search_term_string}`,
+    "query-input": "required name=search_term_string",
+  },
 };
 
 export default function RootLayout({
@@ -17,13 +81,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="pt-BR">
       <head>
-        <link rel="icon" href="/favicon.ico" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </head>
-      <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GOOGLE_TAG || ""} />
-      <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANLITYC || ""} />
-      <body className={"bg-slate-50 " + inter.className}>{children}</body>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
+        {children}
+      </body>
     </html>
   );
 }
