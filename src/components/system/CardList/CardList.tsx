@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Card, CardHeader, CardFooter } from "../../ui";
-import data, { Notice } from "./data";
+import data, { type Notice } from "@/lib/data/notices";
 export default function CardList() {
   function sortAndFormatNotices(notices: Notice[]) {
     const sortedNotices = notices.sort(
